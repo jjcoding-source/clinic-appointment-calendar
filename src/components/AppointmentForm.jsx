@@ -31,7 +31,7 @@ export default function AppointmentForm({ date, existing, onSave, onClose }) {
   const handleSubmit = () => {
     if (patient && doctor && time) {
       onSave({ date, patient, doctor, time });
-      onClose(); // Close after save
+      onClose(); 
     }
   };
 

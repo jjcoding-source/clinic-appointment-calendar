@@ -70,23 +70,20 @@ export default function CalendarView({
   const firstDay = dayjs(month).startOf("month");
   const lastDay = dayjs(month).endOf("month");
 
-  const leadingBlanks = firstDay.day(); // 0 (Sun) to 6 (Sat)
+  const leadingBlanks = firstDay.day(); 
   const totalDaysInMonth = lastDay.date();
 
   const days = [];
 
-  // Push leading blank days
   for (let i = 0; i < leadingBlanks; i++) {
     days.push(null);
   }
 
-  // Push actual days of the month
   for (let i = 1; i <= totalDaysInMonth; i++) {
     const date = firstDay.date(i);
     days.push({ date });
   }
 
-  // Pad trailing blanks to complete weeks (7 columns)
   const totalCells = days.length;
   const trailingBlanks = (7 - (totalCells % 7)) % 7;
   for (let i = 0; i < trailingBlanks; i++) {
